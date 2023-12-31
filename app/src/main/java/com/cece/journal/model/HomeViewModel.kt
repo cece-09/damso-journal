@@ -23,13 +23,17 @@ class HomeViewModel @Inject constructor(
     /* input fields */
     private val _content = MutableLiveData("")
     val content: LiveData<String> get() = _content
+    fun updateContent(value: String) {
+        _content.value = value
+    }
 
+    /* methods to modify data */
     suspend fun save() {
         if(content.value!!.isEmpty()) return
         journalRepository.create(Journal(content = content.value))
     }
 
-    fun updateContent(value: String) {
-        _content.value = value
+    suspend fun delete(journal: Journal) {
+        journalRepository.delete(journal)
     }
 }

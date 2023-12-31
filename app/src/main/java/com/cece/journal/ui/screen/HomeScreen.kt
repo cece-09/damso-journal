@@ -9,10 +9,13 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.cece.journal.model.HomeViewModel
 import com.cece.journal.ui.components.EditorSheet
+import com.cece.journal.ui.components.JournalCard
 import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,18 +52,21 @@ fun HomeScreen(
             .weight(10f)
             .fillMaxWidth()) {
             Column {
+                Button(
+                    modifier = Modifier.offset(
+                        x = 16.dp,
+                        y = 16.dp,
+                    ),
+                    onClick = { showBottomSheet = true }) {
+                    Text(text = "일기 작성하기")
+                }
+
                 /* lazy columns */
                 LazyColumn {
                     items(journals.orEmpty()) { journal ->
                         // TODO: change to journal card
-                        Text(text = journal.content ?: "")
+                        JournalCard(journal)
                     }
-                }
-
-                Button(onClick = {
-                    showBottomSheet = true
-                }) {
-                    Text(text = "일기 작성하기")
                 }
             }
         }

@@ -9,7 +9,7 @@ import com.cece.journal.ui.screen.HomeScreen
 import com.cece.journal.util.`typealias`.ScreenBuilder
 
 
-enum class Route(val builder: ScreenBuilder ) {
+enum class Route(val builder: ScreenBuilder) {
     HOME   ( { HomeScreen() } ),
     DATE   ( { DateScreen() } ),;
 

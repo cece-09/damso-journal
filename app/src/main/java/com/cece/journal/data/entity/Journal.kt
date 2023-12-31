@@ -11,7 +11,7 @@ data class Journal(
     val content: String?
 ) {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    var id: Long = 0
 
     @ColumnInfo(name = "date")
     var date: Date = Date()
