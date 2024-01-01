@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cece.journal.data.entity.Journal
 import com.cece.journal.data.repository.JournalRepository
+import com.cece.journal.util.extension.toViewString
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,7 +18,7 @@ class HomeViewModel @Inject constructor(
     private val formatter = SimpleDateFormat("yyyy년 MM월 dd일", Locale.KOREA)
 
     /* read only fields */
-    val today: String = formatter.format(Date())
+    val today: String = Date().toViewString()
     val journals = journalRepository.getAll()
 
     /* input fields */
